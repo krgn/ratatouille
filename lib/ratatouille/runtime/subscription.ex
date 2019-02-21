@@ -37,7 +37,7 @@ defmodule Ratatouille.Runtime.Subscription do
   approximately the given interval. See above for details on what
   "approximately" means here.
   """
-  @spec interval(non_neg_integer(), term()) :: Subscription.t()
+  #@spec interval(non_neg_integer(), term()) :: Subscription.t()
   def interval(ms, message) do
     # Like 0, but accounts for a negative monotonic time
     last_at_ms = :erlang.monotonic_time(:millisecond) - ms
@@ -50,7 +50,7 @@ defmodule Ratatouille.Runtime.Subscription do
   This provides a way to subscribe to multiple things, while still returning a
   single subscription in `c:Ratatouille.App.subscribe/1`.
   """
-  @spec batch([Subscription.t()]) :: Subscription.t()
+  #@spec batch([Subscription.t()]) :: Subscription.t()
   def batch([%Subscription{} | _] = subs) do
     %Subscription{type: :batch, data: subs}
   end

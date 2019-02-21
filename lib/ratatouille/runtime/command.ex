@@ -20,7 +20,7 @@ defmodule Ratatouille.Runtime.Command do
   response back to your app along with the result. It can be any Erlang term, so
   it's also possible to include identifiers (e.g., `{:finished, id}`).
   """
-  @spec new((-> term()), term()) :: Command.t()
+  # @spec new((-> term()), term()) :: Command.t()
   def new(func, message) when is_function(func) do
     %Command{type: :single, message: message, function: func}
   end
@@ -36,7 +36,7 @@ defmodule Ratatouille.Runtime.Command do
   Dependencies should be expressed via a single command or a sequence of
   commands orchestrated via the application model state.
   """
-  @spec batch([Command.t()]) :: Command.t()
+  #@spec batch([Command.t()]) :: Command.t()
   def batch([%Command{} | _] = cmds) do
     %Command{type: :batch, subcommands: cmds}
   end
